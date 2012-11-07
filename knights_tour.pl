@@ -3,18 +3,23 @@
 %
 %
 %
-% Move with heuristic
+% Solves the knight's tour problem.
 %
 %
-%
+% Uncomment one of the two lines to switch from the naive algorithm (bruteforce) to the heuristic algorithm (look ahead).
 knight(Tour) :-
+    % naiveSolution(Tour).
+    heuristic(Tour).
+
+% Calls the heuristic method
+heuristic(Tour) :-
 	chessboardSize(N,M),
 	Total is N*M,
 	generate(Total, L),
 	position(I,J),
 	pos2d(I, J, P),
 	changeElement(P, 1, L, L2),
-	heuristicSolution(I, J, L2, 1, Solution),
+    heuristicSolution(I, J, L2, 1, Solution),
 	Tour = [(I, J)|Solution].
 
 % Checks that (I,J) belongs to the chessboard.
@@ -298,7 +303,7 @@ previousStep(I) :-
 	read(I),
 	write('J='),
 	read(J),
-	TermChessboardSize =.. [config, N, M],
+	TermChessboardSize =.. [chessboardSize, N, M],
 	TermPosition =.. [position, I, J],
 	assert(TermChessboardSize),
 	assert(TermPosition).
