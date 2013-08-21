@@ -10,8 +10,8 @@ chessboards of size 25x25 and it finds solutions in a sufficient response time.
 
 # Usage
 
-``` swipl -s knights_tour.pl
+`swipl -s knights_tour.pl`
 
 Then answer the questions about the size of the chessboard, then type:
 
-``` go.
+`go.`
